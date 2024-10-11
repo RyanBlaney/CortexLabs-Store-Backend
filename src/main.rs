@@ -1,5 +1,6 @@
 use actix_cors::Cors;
 use actix_web::{get, http, web, App, HttpServer};
+use dotenv::dotenv;
 use serde::{Deserialize, Serialize};
 use std::sync::Mutex;
 
@@ -51,6 +52,8 @@ async fn main() -> std::io::Result<()> {
         audio_products: Mutex::new(vec![]),
         audio_categories: Mutex::new(vec![]),
     });
+
+    dotenv().ok();
 
     HttpServer::new(move || {
         App::new()
